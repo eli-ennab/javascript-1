@@ -27,10 +27,64 @@
  * - eller har minst 16 tecken
  */
 
+//  let password;
+//  // password = "password"; // inte giltigt
+//  // password= "passwordpassword" // giltligt, har minst 16 tecken
+//  // password= "passwo-" // inte giltligt
+//  // password= "password-pass" // giltligt, har minst 12 tecken och minst 1 bindestreck
+//  // password= "password!" // giltligt, minst 8 tecken varav minst ett specialtecken enligt nedan
+//  // password= "pass!" // inte giltligt
+//  // password = "pa$$word"; // giltigt
+// //  password = "pa$sw@"; // giltigt
+ 
+//  password.length;
+//  const specialChars = [
+//      "@", "$", "%", "*", "^", "<", ">", "?", "!", "(", ")", "[", "]", "{", "}", "'"
+//  ];
+ 
+//  let specialCharCount = 0 // false
+ 
+//  for (let i = 0; i < specialChars.length; i++) {
+//      const specialChar = specialChars[i];
+ 
+//      if (password.includes(specialChar)) {
+//          specialCharCount += 1
+//      }
+//  }
+ 
+/**
+ * A try with function
+ */
+
+ function passwordChecker() {
+    let userPassword = prompt("Please enter your password.");
+    let passwordSecure = false;
+
+        if (password.length >= 16) {
+            passwordSecure = true;
+            prompt(`That is a secure password.`);
+        } else if (password.length >= 12 && password.includes('-')){
+            passwordSecure = true;
+            prompt(`That is a secure password.`);
+        } else if (password.length >= 8 && specialCharCount >= 1){
+            passwordSecure = true;
+            prompt(`That is a secure password.`);
+        } else if (password.length >= 6 && specialCharCount >= 2) {
+            passwordSecure = true;
+            prompt(`That is a secure password.`);
+        } else {
+            prompt(`That is not a secure password.`);
+        }
+
+  };
+
+  passwordChecker();
+
 /**
  * Form with validaton and REGEX
  */
 
+/*
 const form = document.querySelector('.password-form');
 const feedback = document.querySelector('.feedback');
 
@@ -46,3 +100,4 @@ form.addEventListener('submit', (e) => {
         feedback.textContent = 'That password is NOT valid.';
     }
 });
+*/
