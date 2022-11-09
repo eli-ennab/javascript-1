@@ -1,0 +1,30 @@
+body {
+    background: rgb(178, 255, 255);
+}
+
+h1 {
+    color: rgb(51, 53, 54);
+    font-size: 28px;
+}
+
+.password-form {
+    background-color: rgb(51, 53, 54);
+    border: 2px solid rgb(155, 165, 170);
+    color: white;
+    width: 300px;
+    padding: 10px;
+    margin: 40px auto;
+}
+
+input {
+    display: block;
+    background-color: rgb(60, 65, 59);
+    color: white;
+    border: 2px solid white;
+    margin: 10px auto;
+    padding: 5px;
+}
+
+#password {
+    color: white;
+}

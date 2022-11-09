@@ -27,47 +27,22 @@
  * - eller har minst 16 tecken
  */
 
-let password;
-// password = "password"; // inte giltigt
-// password = "p@$swo"; // giltigt
-// password = "pa$sword"; // giltigt
-password = "p@ssw%rd"; // giltigt
-// password = "pa$$word"; // giltigt
-// password = "secretpassword"; // inte giltigt
-// password = "secret-password"; // giltigt
-// password = "such-password-much-secure-very-long"; // giltigt
+/**
+ * Form with validaton and REGEX
+ */
 
-password.length;
-const specialChars = [
-    "@", "$", "%", "*", "^", "<", ">", "?", "!", "(", ")", "[", "]", "{", "}", "'"
-];
+const form = document.querySelector('.password-form');
+const feedback = document.querySelector('.feedback');
 
-// set status variable to initial value false
-let specialCharCount = 0 // 0 har Boolean-värde false!
+form.addEventListener('submit', (e) => {
+    e.preventDefault();
 
-// iterate (loop) over each item in specialChars
-for (let i = 0; i < specialChars.length; i++) {
-    const specialChar = specialChars[i];
+    const password = form.password.value;
+    const passwordPattern = /^[a-zA-Z\@\$\%\*\^\<\>\?\!\(\)\[\]\{\}\']{6,10}$/;
 
-    if (password.includes(specialChar)) {
-		specialCharCount++
+    if(passwordPattern.test(password)){
+        feedback.textContent = 'That password is valid.';
+    } else {
+        feedback.textContent = 'That password is NOT valid.';
     }
-}
-
-console.log(`Checking password... "${password}"`);
-
-if (password.length >= 16) {
-    console.log(`Congrats, your password is at least 16 characters long!`);
-
-} else if (password.length >= 12 && password.includes('-')){
-    console.log(`Congrats, your password is at least 12 characters long and contains a hyphen.`);
-
-} else if (password.length >= 8 && specialCharCount >= 1){
-    console.log(`Congrats, your password is at least 8 characters long and contains at least one special char.`);
-
-} else if (password.length >= 6 && specialCharCount >= 2) {
-    console.log(`Congrats, your password is at least 6 characters long and contains at least two different special chars.`);
-
-} else {
-    console.log(`Insecure password. Try again!`);
-}
+});
