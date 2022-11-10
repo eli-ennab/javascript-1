@@ -71,7 +71,7 @@ const countSpecialChars = (pwd) => { // pwd = "lolcats"
         i++  // AFTER each round, increase i by 1
     ) {
         const specialChar = specialChars[i]
-        console.log(`At index ${i}, does password contain '${specialChar}'?`, pwd.includes(specialChar));
+        console.log(`At index ${i}, does '${pwd}' contain '${specialChar}'?`, pwd.includes(specialChar));
     
         if (pwd.includes(specialChar)) {
             specialCharCount++
