@@ -63,3 +63,16 @@ document.querySelector('ul').addEventListener('click', (e) => {
         // Stoppa event bubbling (AKA propagate)
         e.stopPropagation();
 });
+
+// add click-event listener to the link
+document.querySelector('a').addEventListener('click', e => {
+
+    // this will be executed whenever someone clicks on the link
+    // alert('Are you sure?');
+
+    // prevent user from ever leaving our site
+    e.preventDefault();
+    alert('You can check in but you can never leave.');
+
+
+});
