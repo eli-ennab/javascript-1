@@ -51,11 +51,59 @@
 //          specialCharCount += 1
 //      }
 //  }
- 
+
+/**
+ * Johans lösning
+ */
+
+// STEG 1
+
+ const specialChars = [
+	"@", "$", "%", "*", "^", "<", ">", "?", "!", "(", ")", "[", "]", "{", "}", "'"
+];
+
+let password = prompt("Please enter password to check:");
+
+console.log(`Checking password '${password}'`);
+
+let specialCharCount = 0
+
+// iterate (loop) over each item in specialChars
+for (let i = 0;  // only executed once, at the beginning of the loop
+	i < specialChars.length;  // should we continue another round?
+	i++  // AFTER each round, increase i by 1
+) {
+	const specialChar = specialChars[i]
+	console.log(`At index ${i}, does password contain '${specialChar}'?`, password.includes(specialChar));
+
+	if (password.includes(specialChar)) {
+		specialCharCount++
+	}
+}
+
+console.log("Loop is done, found:", specialCharCount);
+
+if (password.length >= 16) {
+	console.log("Great! That's a long password!");
+
+} else if (password.length >= 12 && password.includes('-')) {
+	console.log("Great! That's a pretty good password!");
+
+} else if (password.length >= 8 && specialCharCount) {
+	console.log("Great! Such password, much secure, very hard to crack!");
+
+} else if (password.length >= 6 && specialCharCount >= 2) {
+	console.log("Great! Such password, much secure, VERY hard to crack!");
+
+} else {
+	console.log("- Insecure password, my grandma can crack it!");
+}
+
 /**
  * A try with function
  */
 
+/*
  function passwordChecker() {
     let userPassword = prompt("Please enter your password.");
     let passwordSecure = false;
@@ -79,6 +127,7 @@
   };
 
   passwordChecker();
+*/
 
 /**
  * Form with validaton and REGEX
