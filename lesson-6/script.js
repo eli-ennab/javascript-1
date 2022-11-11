@@ -74,3 +74,13 @@ document.querySelector('a').addEventListener('click', e => {
     e.preventDefault();		// stoppar standardbeteendet i t.ex. formulär
     alert('You can check in but you can never leave.');
 });
+
+// // Mouse over-event
+// document.querySelector('ul').addEventListener('mouseover', (e) => {
+// 	console.log('Mouseover triggered.', e);
+// });
+
+// // Mouse move-event
+// document.querySelector('ul').addEventListener('mousemove', (e) => {
+// 	console.log('Mousemove triggered.', e);
+// });
