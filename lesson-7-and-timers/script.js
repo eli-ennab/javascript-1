@@ -10,6 +10,8 @@
     // hide button
     btnScareMe.classList.add('hide');
 
+    const delay = getRandomNumber() * 1000;
+
     // start timer
     setTimeout ( () => {
         // this will be executed after 2000 milliseconds (2 seconds)
