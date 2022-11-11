@@ -57,7 +57,7 @@ document.querySelector('ul').addEventListener('click', (e) => {
 
     // OM tagname är LI, GÖR någonting
     if (e.target.tagName === "LI") {
-		e.target.classList.toggle("completed");
+		e.target.classList.toggle("completed");	// completed är klassen 'completed'
     }
 
         // Stoppa event bubbling (AKA propagate)
@@ -71,8 +71,6 @@ document.querySelector('a').addEventListener('click', e => {
     // alert('Are you sure?');
 
     // prevent user from ever leaving our site
-    e.preventDefault();
+    e.preventDefault();		// stoppar standardbeteendet i t.ex. formulär
     alert('You can check in but you can never leave.');
-
-
 });
