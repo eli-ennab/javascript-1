@@ -47,12 +47,16 @@ console.log("Numbers in chaos:", numbers);
 //     return 0;
 // } );
 
-// sort numbers NUMERICALLY, shorthand
-numbers.sort( (a, b) => {
-    return (a - b);
+// // sort numbers NUMERICALLY, shorter way
+// numbers.sort( (a, b) => {
+//     return (a - b);
 
-    // reverse numerically order
-    // return (b - a);
-} );
+//     // reverse numerically order
+//     // return (b - a);
+// } );
+
+// EVEN SHORTER SHORTHAND, a one-liner
+// this is a function that we send to sort() as a parameter
+numbers.sort( (a, b) => a - b);
 
 console.log("Numbers in proper order:", numbers);
