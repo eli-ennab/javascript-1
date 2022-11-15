@@ -4,6 +4,7 @@
  * STEG 1
  * Loopa över todos och för varje todo, skriv ut en
  * `<li class="list-group-item">` till #todos med titeln på todo:n.
+ * 
  *
  * STEG 2
  * Koppla ihop formuläret så att det skapas en nytt TODO-objekt som
@@ -36,3 +37,7 @@ const todos = [
 		completed: false,
 	},
 ];
+
+todos.forEach((todo => {
+    todosEl.innerHTML += `<li class="list-group-item">${todo.title}</li>`;
+}))
