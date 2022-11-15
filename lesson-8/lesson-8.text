@@ -1,0 +1,11 @@
+# Higher Order Array Methods
+
+* .sort()
+* .filter()
+* .find()
+* .map()
+* .reduce()
+
+* Clone an Array
+* Shuffle an Array, copypasting the Fisher-Yates algorithm
+* To do-list
