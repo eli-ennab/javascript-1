@@ -10,11 +10,7 @@ console.log("Original numbers:", numbers);
 
 // filter and push out all numbers equal to or bigger than 25 (to a new array)
 const largeNumbers = numbers.filter( num => {
-    if (num >= 25) {
-        return true;
-    } else {
-        return false;
-    }
+    return (num >= 25);
 } );
 
 console.log("Numbers >= 25:", largeNumbers);
