@@ -137,13 +137,20 @@ const students = [
 
 students.sort( (a, b) => {
 
-    if (a.name < b.name) {
+    if (a.name.toUpperCase() < b.name.toUpperCase()) {
         return -1;
     }
 
-    if (a.name > b.name) {
+    if (a.name.toUpperCase() > b.name.toUpperCase()) {
         return 1;
     }
 });
 
-console.log(students);
+console.log("Student-object sorted by name:", students);
+
+// function capitalize(word) {
+//     return word[0].toUpperCase() + word.substring(1).toLowerCase();
+// }
+
+// // Sample usage - do not modify
+// console.log(capitalize("sam")); // "Sam"
