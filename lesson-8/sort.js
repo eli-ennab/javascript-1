@@ -63,9 +63,58 @@
 
 // We can even sort objecs based on a property
 
+// const students = [
+//     {
+//         name: "Johan",
+//         points: 1337,
+//     },
+//     {
+//         name: "Saman",
+//         points: 3,
+//     },
+//     {
+//         name: "Alicia",
+//         points: 42,
+//     },
+//     {
+//         name: "Elliot",
+//         points: 88,
+//     },
+//     {
+//         name: "Maja",
+//         points: 35,
+//     },
+// ];
+
+// // console.log("Students:", students);
+
+// // sorting students points from low to high
+// students.sort( (a, b) => {
+//     // shorthand
+//     return (a.points - b.points);
+
+//     // // the longer way
+//     // if (a.points < b.points) {
+//     //     return -1;
+//     // }
+
+//     // if (a.points > b.points) {
+//     //     return 1;
+//     // }
+
+//     // return 0;
+
+//     // students.sort( (a, b) => a.points - b.points);
+
+// } );
+
+// console.log("Students points from lowest to highest:", students);
+
+// sort students by name
+
 const students = [
     {
-        name: "Johan",
+        name: "johan",
         points: 1337,
     },
     {
@@ -73,7 +122,7 @@ const students = [
         points: 3,
     },
     {
-        name: "Alicia",
+        name: "alicia",
         points: 42,
     },
     {
@@ -86,26 +135,15 @@ const students = [
     },
 ];
 
-console.log("Students:", students);
-
-// sorting students points from low to high
 students.sort( (a, b) => {
-    // shorthand
-    return (a.points - b.points);
 
-    // // the longer way
-    // if (a.points < b.points) {
-    //     return -1;
-    // }
+    if (a.name < b.name) {
+        return -1;
+    }
 
-    // if (a.points > b.points) {
-    //     return 1;
-    // }
+    if (a.name > b.name) {
+        return 1;
+    }
+});
 
-    // return 0;
-
-    // students.sort( (a, b) => a.points - b.points);
-
-} );
-
-console.log("Students points from lowest to highest:", students);
+console.log(students);
