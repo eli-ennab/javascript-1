@@ -38,7 +38,6 @@ const todos = [
 ];
 
 todos.forEach(todo => {
-	todosEl.innerHTML += ``;
     todosEl.innerHTML += `<li class="list-group-item">${todo.title}</li>`;
 });
 
@@ -48,15 +47,18 @@ newTodoFormEl.addEventListener('submit', (e) => {
 	console.log("New list item submitted.", e.target);
 
 	// GET reference to ALL `li` elements and their LENGTH
-	const newListItem = document.querySelectorAll('li');
+	// const newListItem = document.querySelectorAll('li');
 
 	// find the input value
 	const inputListItem = document.getElementById('newTodo').value;
 
 	// will *REPLACE* all content in the element with
 	// a NEW string that contains both the old and the new content
-	// document.querySelector('ul').innerHTML += `<li class="list-group-item">${inputListItem} ${newListItem + 1}</li>`;
+	if (inputListItem === "") {
+		return false;
+	} else {
 	document.querySelector('ul').innerHTML += `<li class="list-group-item">${inputListItem}</li>`;
+	}
 
 	// STOP event from bubbling up (propagate)
 	e.stopPropagation();
@@ -67,13 +69,13 @@ newTodoFormEl.addEventListener('submit', (e) => {
 
 // lyssna efter klick på hela listan
 document.querySelector('ul').addEventListener('click', (e) => {
-	console.log("Added class completed.", e);
+	// console.log("Added class completed.", e);
 
 	// OM tagName är LI, GÖR någonting
 	if (e.target.tagName === "LI") {
-		e.target.classList.toggle("completed");
+		e.target.classList.add("completed");
 
-		// STOP event from bubbling up (propagate)
-		e.stopPropagation();
+	// STOP event from bubbling up (propagate)
+	e.stopPropagation();
 	}
 });
