@@ -74,13 +74,17 @@ newTodoFormEl.addEventListener('submit', (e) => {
 	e.preventDefault();
 });
 
-// lyssna efter klick på hela listan
-document.querySelector('ul').addEventListener('click', (e) => {
+	// lyssna efter klick på hela listan
+	document.querySelector('ul').addEventListener('click', (e) => {
 	// console.log("Added class completed.", e);
 
 	// OM tagName är LI, GÖR någonting
 	if (e.target.tagName === "LI") {
 		e.target.classList.add("completed");
+
+	// // Completed, true or false
+	// const completedListItem = todos.filter(todo => todo.completed);
+	// console.log(completedListItem);
 
 	// STOP event from bubbling up (propagate)
 	e.stopPropagation();
