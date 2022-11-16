@@ -44,13 +44,20 @@ todos.forEach(todo => {
 // WHEN someone CLICKS on the BUTTON
 newTodoFormEl.addEventListener('submit', (e) => {
 	// DO this
-	console.log("New list item submitted.", e.target);
+	// console.log("New list item submitted.", e.target);
 
 	// GET reference to ALL `li` elements and their LENGTH
 	// const newListItem = document.querySelectorAll('li');
 
 	// find the input value
 	const inputListItem = document.getElementById('newTodo').value;
+
+	todos.push(
+		{
+			title: `${inputListItem}`,
+			completed: false,
+		}
+	);
 
 	// will *REPLACE* all content in the element with
 	// a NEW string that contains both the old and the new content
