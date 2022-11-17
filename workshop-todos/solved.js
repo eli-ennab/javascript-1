@@ -36,3 +36,10 @@ const todos = [
 		completed: false,
 	},
 ];
+
+todos.forEach(todo => {
+    // console.log(todo.title);
+    // += is append to
+    const str = `<li class="list-group-item">${todo.title}</li>`;
+    todosEl.innerHTML += str;
+});
