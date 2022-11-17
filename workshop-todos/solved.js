@@ -38,13 +38,13 @@ const todos = [
 ];
 
 // Steg 1: Render todos to DOM
-// const renderTodos = () => {
+const renderTodos = () => {
     todosEl.innerHTML = '';
     todos.forEach(todo => {
         todosEl.innerHTML += `<li class="list-group-item">${todo.title}</li>`;
     });
-// };
-// renderTodos();
+};
+renderTodos();
 
 // Steg 2: Create a new todo when form is submitted
 newTodoFormEl.addEventListener('submit', (e) => {
@@ -59,7 +59,6 @@ newTodoFormEl.addEventListener('submit', (e) => {
     });
 
     // Render new todo to DOM
-    todosEl.innerHTML += `<li class="list-group-item">${newTodoFormEl.newTodo.value}</li>`;
-
+    renderTodos();
 });
 
