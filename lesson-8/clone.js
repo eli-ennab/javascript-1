@@ -17,3 +17,9 @@ const clone_fail = names; // Copies the *REFERENCE* to the array, *NOT* the _con
 // new way to clone an array with Spread syntax
 const new_names = [ ...names ];
 console.log(new_names);
+
+const numbers = [ 5, 21, 50, 24, 92, 18, 47, ];
+
+// clone an array with numbers
+Math.min( ...numbers );
+Math.max( ...numbers );
