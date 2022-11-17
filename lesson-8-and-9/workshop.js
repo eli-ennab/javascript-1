@@ -46,7 +46,6 @@ console.log(`The names of all friends in year 3: ${year3_names}`);
 // save in `year5_male_names` and console.log it
 
 const year5_males = friends
-.filter(friend => friend.year === 5)
-.filter(friend => friend.sex === 'M')
+.filter(friend => friend.year === 5 && friend.sex === 'M')
 .map(friend => `'${friend.name}'`);
 console.log(`The names of all male friends in year 5: ${year5_males}`);
