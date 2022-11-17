@@ -1,13 +1,14 @@
 /**
  * Todos
- *
+ * Developing the todo-workshop with
+ * HTML data-* Attribute 
 */
 
-// get references to DOM elements
+// Get references to DOM elements
 const todosEl = document.querySelector('#todos');
 const newTodoFormEl = document.querySelector('#new-todo-form');
 
-// list of todos
+// List of todos
 const todos = [
 	{
 		title: "Learn basic JavaScript",
@@ -23,7 +24,7 @@ const todos = [
 	},
 ];
 
-// Steg 1: Render todos to DOM
+// Render todos to DOM
 const renderTodos = () => {
     todosEl.innerHTML = '';
     todos.forEach(todo => {
@@ -47,7 +48,6 @@ todosEl.addEventListener('click', (e) => {
         } );
 
         // Change completed status of found todo
-        // If it's true, then it changes to false and the other way around
         clickedTodo.completed = !clickedTodo.completed;
 
         // Render updated todos
@@ -55,23 +55,18 @@ todosEl.addEventListener('click', (e) => {
     }
 });
 
-// Steg 2: Create a new todo when form is submitted
+// Create a new todo when form is submitted
 newTodoFormEl.addEventListener('submit', (e) => {
-    // Prevent form from being submitted (to the server)
     e.preventDefault();
 
     // Create and push new todo into array
     todos.push({
         title: newTodoFormEl.newTodo.value,
-        // title: document.querySelector('#newTodo').value,
         completed: false
     });
 
     // Render new todo to DOM
     renderTodos();
-
-    // Empty input field, or use the reset form instead
-    // newTodoFormEl.newTodo.value = '';
 
     // Reset form
     newTodoFormEl.reset();
