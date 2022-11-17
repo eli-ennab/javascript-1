@@ -3,6 +3,7 @@
  * 
  * Clone an array
  * SPREAD SYNTAX
+ * More about spread on Netninja video 148
 */
 
 const names = ["Johan", "Kalle", "Kajsa"];
