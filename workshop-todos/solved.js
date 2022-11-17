@@ -61,7 +61,8 @@ todosEl.addEventListener('click', (e) => {
         } );
 
         // Change completed status of found todo
-        clickedTodo.completed = true;
+        // If it's true, then it changes to false and the other way around
+        clickedTodo.completed = !clickedTodo.completed;
 
         // Render updated todos
         renderTodos();
