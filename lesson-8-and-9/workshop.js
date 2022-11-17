@@ -22,16 +22,31 @@ const friends = [
 ];
 
 // All school friends names
-const schoolFriendsNames = friends.map(friend => friend.name);
-console.log("All school friends names:", schoolFriendsNames);
+// const schoolFriendsNames = friends.map(friend => friend.name);
+// console.log("All school friends names:", schoolFriendsNames);
 
 // 1. get an array of the names of all friends in year 3
 // save in `year3_names` and console.log it
-const filtered = friends.filter(friend => friend.year === 3);
-const year3_names = filtered.map(friend => {
-    return `'${friend.name}'`;
-});
+
+// Not chained, but the same result
+// const filtered = friends.filter(friend => friend.year === 3);
+// const year3_names = filtered.map(friend => {
+//     return `'${friend.name}'`;
+// });
+// console.log(`The names of all friends in year 3: ${year3_names}`);
+
+// Chained array methods filter and map
+const year3_names = friends
+.filter(friend => friend.year === 3)
+.map(friend => `'${friend.name}'`);
 console.log(`The names of all friends in year 3: ${year3_names}`);
+
 
 // 2. get an array of the names of all male friends in year 5
 // save in `year5_male_names` and console.log it
+
+const year5_males = friends
+.filter(friend => friend.year === 5)
+.filter(friend => friend.sex === 'M')
+.map(friend => `'${friend.name}'`);
+console.log(`The names of all male friends in year 5: ${year5_males}`);
