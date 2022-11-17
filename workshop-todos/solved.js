@@ -37,13 +37,7 @@ const todos = [
 	},
 ];
 
-// todos.forEach(todo => {
-//     const str = `<li class="list-group-item">${todo.title}</li>`;
-//     todosEl.innerHTML += str;
-// });
-
-let str = '';
+todosEl.innerHTML = '';         // empties the list each time
 todos.forEach(todo => {
-    str += `<li class="list-group-item">${todo.title}</li>`;
+    todosEl.innerHTML += `<li class="list-group-item">${todo.title}</li>`;
 });
-todosEl.innerHTML = str;
