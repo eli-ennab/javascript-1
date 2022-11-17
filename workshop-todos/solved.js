@@ -37,9 +37,13 @@ const todos = [
 	},
 ];
 
+// todos.forEach(todo => {
+//     const str = `<li class="list-group-item">${todo.title}</li>`;
+//     todosEl.innerHTML += str;
+// });
+
+let str = '';
 todos.forEach(todo => {
-    // console.log(todo.title);
-    // += is append to
-    const str = `<li class="list-group-item">${todo.title}</li>`;
-    todosEl.innerHTML += str;
+    str += `<li class="list-group-item">${todo.title}</li>`;
 });
+todosEl.innerHTML = str;
