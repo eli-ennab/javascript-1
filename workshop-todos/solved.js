@@ -37,7 +37,12 @@ const todos = [
 	},
 ];
 
-todosEl.innerHTML = '';         // empties the list each time
-todos.forEach(todo => {
-    todosEl.innerHTML += `<li class="list-group-item">${todo.title}</li>`;
-});
+// Steg 1
+const renderTodos = () => {
+    todosEl.innerHTML = '';
+    todos.forEach(todo => {
+        todosEl.innerHTML += `<li class="list-group-item">${todo.title}</li>`;
+    });
+};
+
+renderTodos();
