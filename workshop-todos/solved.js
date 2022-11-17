@@ -50,6 +50,24 @@ const renderTodos = () => {
 };
 renderTodos();
 
+// Listen for click-events on the `#todos` (the `<ul>`)
+todosEl.addEventListener('click', (e) => {
+    // Check if user clickes on a LI element
+    if (e.target.tagName === "LI") {
+        const clickedTodoTitle = e.target.innerText;
+        // Search todos for the todo with the title clickedTodoTitle
+        const clickedTodo = todos.find( (todo) => {
+            return todo.title === clickedTodoTitle;
+        } );
+
+        // Change completed status of found todo
+        clickedTodo.completed = true;
+
+        // Render updated todos
+        renderTodos();
+    }
+});
+
 // Steg 2: Create a new todo when form is submitted
 newTodoFormEl.addEventListener('submit', (e) => {
     // Prevent form from being submitted (to the server)
@@ -71,6 +89,5 @@ newTodoFormEl.addEventListener('submit', (e) => {
     // Reset form
     newTodoFormEl.reset();
 });
-
 
 
