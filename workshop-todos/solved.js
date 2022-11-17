@@ -64,5 +64,13 @@ newTodoFormEl.addEventListener('submit', (e) => {
 
     // Render new todo to DOM
     renderTodos();
+
+    // Empty input field, or use the reset form instead
+    // newTodoFormEl.newTodo.value = '';
+
+    // Reset form
+    newTodoFormEl.reset();
 });
+
+
 
