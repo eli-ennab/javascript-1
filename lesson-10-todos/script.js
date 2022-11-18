@@ -30,21 +30,22 @@ const todos = [
 // Render todos to DOM
 const renderTodos = () => {
 
-	todosEl.innerHTML = '';
-	todos.forEach(todo => {
+	const lis = todos.map(todo => {
 		let cssClasses = "list-group-item";
 
 		if (todo.completed) {
 			cssClasses += " completed";   // "list-group-item completed"
 		}
 
-		todosEl.innerHTML += `
+		return `
 			<li class="${cssClasses}" data-todo-id="${todo.id}">
 				${todo.title}
 			</li>
 		`;
 
 	});
+
+    todosEl.innerHTML = lis.join('');
 }
 renderTodos();
 
