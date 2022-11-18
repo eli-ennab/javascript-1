@@ -36,32 +36,33 @@ const friends = [
 // console.log(`The names of all friends in year 3: ${year3_names}`);
 
 // Chained array methods filter and map
-// const year3_names = friends
-// .filter(friend => friend.year === 3)
+const year3_names = friends
+.filter(friend => friend.year === 3)
+.map(friend => friend.name);
 // .map(friend => `'${friend.name}'`);
-// console.log(`The names of all friends in year 3: ${year3_names}`);
+console.log(`The names of all friends in year 3: ${year3_names}`);
 
 
 // 2. get an array of the names of all male friends in year 5
 // save in `year5_male_names` and console.log it
 
-// const year5_males = friends
-// .filter(friend => friend.year === 5 && friend.sex === 'M')
-// .map(friend => `'${friend.name}'`);
-// console.log(`The names of all male friends in year 5: ${year5_males}`);
+const year5_male_names = friends
+.filter(friend => friend.year === 5 && friend.sex === 'M')
+.map(friend => friend.name);
+console.log(`The names of all male friends in year 5: ${year5_male_names}`);
 
-// 3. new school year (with map and spread)
+// // 3. new school year (with map and spread)
 
 // const older_friends = friends.map(friend => {
 // 	friend.year++;
 // 	return friend;
 // });
 
-// or
+// // or
 
-const older_friends = friends.map(friend => {
-	return {
-		...friend,
-		year: friend.year + 1,
-	};
-});
+// const older_friends = friends.map(friend => {
+// 	return {
+// 		...friend,
+// 		year: friend.year + 1,
+// 	};
+// });
