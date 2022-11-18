@@ -79,36 +79,63 @@ console.log("The sum of all numbers are:", sum);
  
  
  
- const products = [
-	 {
-		 sku: "CORR-BWL",
-		 name: "Corrosive bowl",
-		 in_stock: 321,
-		 price: 0.99,
-	 },
-	 {
-		 sku: "CTN-SPCE",
-		 name: "Cotton spice rack",
-		 in_stock: 2,
-		 price: 149.99,
-	 },
-	 {
-		 sku: "GOOD-COOKIES",
-		 name: "Inside-out Oreo cookies",
-		 in_stock: 18,
-		 price: 2.49,
-	 },
-	 {
-		 sku: "BACK-BREAKER",
-		 name: "The uncomfortable broom",
-		 in_stock: 1,
-		 price: 28.65,
-	 },
- ];
+//  const products = [
+// 	 {
+// 		 sku: "CORR-BWL",
+// 		 name: "Corrosive bowl",
+// 		 in_stock: 321,
+// 		 price: 0.99,
+// 	 },
+// 	 {
+// 		 sku: "CTN-SPCE",
+// 		 name: "Cotton spice rack",
+// 		 in_stock: 2,
+// 		 price: 149.99,
+// 	 },
+// 	 {
+// 		 sku: "GOOD-COOKIES",
+// 		 name: "Inside-out Oreo cookies",
+// 		 in_stock: 18,
+// 		 price: 2.49,
+// 	 },
+// 	 {
+// 		 sku: "BACK-BREAKER",
+// 		 name: "The uncomfortable broom",
+// 		 in_stock: 1,
+// 		 price: 28.65,
+// 	 },
+//  ];
  
-// calculate total stock value
-const total_stock_value = products.reduce( (sum, product) => { 
-	return sum + product.in_stock * product.price;
-}, 0 );
-console.log(total_stock_value);	// 691,24
+// // calculate total stock value
+// const total_stock_value = products.reduce( (sum, product) => { 
+// 	return sum + product.in_stock * product.price;
+// }, 0 );
+// console.log(total_stock_value);	// 691,24
+
+
+
+// school friends
+const friends = [
+	{ name: 'John', grade: 2, year: 3, sex: 'M' },
+	{ name: 'Sarah', grade: 3, year: 2, sex: 'F' },
+	{ name: 'Bob', grade: 3, year: 5, sex: 'M' },
+	{ name: 'Johnny', grade: 2, year: 2, sex: 'M' },
+	{ name: 'Ethan', grade: 4, year: 1, sex: 'M' },
+	{ name: 'Paula', grade: 4, year: 5, sex: 'F' },
+	{ name: 'Donald', grade: 5, year: 5, sex: 'M' },
+	{ name: 'Jennifer', grade: 3, year: 3, sex: 'F' },
+	{ name: 'Courtney', grade: 3, year: 1, sex: 'F' },
+	{ name: 'Jane', grade: 4, year: 3, sex: 'F '}
+];
+
+// calculate average grade for all friends
+const average_grade = friends.reduce ( (sum, friend) => {
+	return sum + friend.grade;
+}, 0 ) / friends.length;
+console.log(`The average grade for all friends are: ${average_grade}`);
+
+// calculate average grade for for all girls
+const girls = friends.filter(friend => friend.sex === 'F');
+const average_grade_girls = girls.reduce((sum, friend) => sum + friend.grade, 0) / girls.length;
+console.log(average_grade_girls);
 
