@@ -40,4 +40,20 @@
  let correctNumber;
  let guesses;
 
- 
+
+
+// When someone clicks on the submit button
+formGuessEl.addEventListener('submit', (e) => {
+
+    console.log('Submit button clicked.', e.target);
+
+    const guessedNumber = inputGuessEl.value;
+    console.log(`Guessed number is: ${guessedNumber}`);
+    cheatEl.innerHTML =+ `${guessedNumber}`;
+
+	// STOP event from bubbling up (propagate)
+	// e.stopPropagation();
+
+	// Prevent default
+	e.preventDefault();
+});
