@@ -36,20 +36,30 @@
  const getRandomNumber = function(max = 10) {
      return Math.ceil( Math.random() * max );
  }
- 
- let correctNumber;
- let guesses;
 
+ let correctNumber = getRandomNumber();
+ cheatEl.innerHTML =+ `${correctNumber}`;
 
+ let guesses = 1;
 
 // When someone clicks on the submit button
 formGuessEl.addEventListener('submit', (e) => {
 
-    console.log('Submit button clicked.', e.target);
+    console.log(`<h2>Number of guesses:</h2> ${guesses}`, e.target);
 
     const guessedNumber = inputGuessEl.value;
-    console.log(`Guessed number is: ${guessedNumber}`);
-    cheatEl.innerHTML =+ `${guessedNumber}`;
+
+    if (guessedNumber == '') {
+        turnoutEl.innerHTML = `<h2>You must submit a value...</h2><h3>Or press 'Give up'.</h3>`;
+    } else if (guessedNumber == correctNumber) {
+        turnoutEl.innerHTML = `<h2>Your guess is correct!</h2><h3>Amount of tries: ${guesses}.</h3>`;
+    }else if (guessedNumber < correctNumber) {
+        turnoutEl.innerHTML = `<h2>Your guess is too low.</h2><h3>Amount of tries: ${guesses}.</h3>`;
+        guesses++
+    } else if (guessedNumber > correctNumber) {
+        turnoutEl.innerHTML = `<h2>Your guess is too high.</h2><h3>Amount of tries: ${guesses}.</h3>`;
+        guesses++
+    };
 
 	// STOP event from bubbling up (propagate)
 	// e.stopPropagation();
