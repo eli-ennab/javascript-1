@@ -40,30 +40,36 @@
  let correctNumber = getRandomNumber();
  cheatEl.innerHTML =+ `${correctNumber}`;
 
- let guesses = 1;
+ let guesses = 0;
 
 // When someone clicks on the submit button
 formGuessEl.addEventListener('submit', (e) => {
+    guesses++;
+
+    // Prevent default
+	e.preventDefault();
 
     console.log(`<h2>Number of guesses:</h2> ${guesses}`, e.target);
 
     const guessedNumber = inputGuessEl.value;
 
     if (guessedNumber == '') {
-        turnoutEl.innerHTML = `<h2>You must submit a value...</h2><h3>Or press 'Give up'.</h3>`;
+        turnoutEl.innerHTML = `<h2>You must submit a value...</h2><h3>Or press 'Give up'.</h3>`
     } else if (guessedNumber == correctNumber) {
         turnoutEl.innerHTML = `<h2>Your guess is correct!</h2><h3>Amount of tries: ${guesses}.</h3>`;
-    }else if (guessedNumber < correctNumber) {
-        turnoutEl.innerHTML = `<h2>Your guess is too low.</h2><h3>Amount of tries: ${guesses}.</h3>`;
-        guesses++
+    } else if (guessedNumber < correctNumber) {
+        turnoutEl.innerHTML = `<h2>Your guess is too low.</h2><h3>Amount of tries: ${guesses}.</h3>`;      
     } else if (guessedNumber > correctNumber) {
         turnoutEl.innerHTML = `<h2>Your guess is too high.</h2><h3>Amount of tries: ${guesses}.</h3>`;
-        guesses++
     };
 
-	// STOP event from bubbling up (propagate)
-	// e.stopPropagation();
-
-	// Prevent default
-	e.preventDefault();
+    correctNumber = getRandomNumber();
+    cheatEl.innerHTML =+ `${correctNumber}`;
 });
+
+formGuessEl.addEventListener('reset', (e) => {
+    guesses = 0;
+    turnoutEl.innerHTML = `<h2>You gave up!</h3>`;
+    correctNumber = getRandomNumber();
+    cheatEl.innerHTML =+ `${correctNumber}`;
+ });
