@@ -13,14 +13,16 @@ const getRandomNumber = function(max = 10) {
 let correctNumber;
 let guesses;
 
-// Get a random number
-correctNumber = getRandomNumber();
+const startNewGame = () => {
+    // Get a random number
+    correctNumber = getRandomNumber();
 
-// Reset number of guesses to 0
-guesses = 0;
+    // Reset number of guesses to 0
+    guesses = 0;
 
-// I'm going to cheat!
-cheatEl.innerText = correctNumber;
+    // I'm going to cheat!
+    cheatEl.innerText = correctNumber;
+}
 
 const updateGuesses = (nbrOfGuesses) => {
     guessesEl.innerText = `${nbrOfGuesses} guesses.`;
@@ -62,9 +64,8 @@ formGuessEl.addEventListener('submit', e => {
 
 // Listen for reset / "New game"
 formGuessEl.addEventListener('reset', () => {
-    // Get a new number to guess
-    correctNumber = getRandomNumber();
-    cheatEl.innerText = correctNumber;
+    // Start a new game
+    startNewGame();
 
     // Reset number of guesses
     updateGuesses(guesses);
@@ -75,3 +76,6 @@ formGuessEl.addEventListener('reset', () => {
     // Enable submit-button again
     btnGetLuckyEl.removeAttribute('disabled');
  });
+
+// Start a new game
+startNewGame();
