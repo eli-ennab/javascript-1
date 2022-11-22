@@ -22,6 +22,10 @@ guesses = 0;
 // I'm going to cheat!
 cheatEl.innerText = correctNumber;
 
+const updateGuesses = (nbrOfGuesses) => {
+    guessesEl.innerText = `${nbrOfGuesses} guesses.`;
+}
+
 // Listen for guesses
 formGuessEl.addEventListener('submit', e => {
     // Stop form from being sent to server
@@ -34,7 +38,7 @@ formGuessEl.addEventListener('submit', e => {
     guesses++;
 
     // Update DOM with guesses made
-    guessesEl.innerText = `${guesses} guesses.`;
+    updateGuesses(guesses);
 
     // Check if guess was correct
     if (guessedNumber === correctNumber) {
@@ -63,8 +67,7 @@ formGuessEl.addEventListener('reset', () => {
     cheatEl.innerText = correctNumber;
 
     // Reset number of guesses
-    guesses = 0;
-    guessesEl.innerText = `${guesses} guesses.`;
+    updateGuesses(guesses);
 
     // Empty previuos result
     turnoutEl.innerHTML = '';
