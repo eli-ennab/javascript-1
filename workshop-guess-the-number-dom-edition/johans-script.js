@@ -3,6 +3,7 @@ const formGuessEl = document.querySelector('#formGuess');
 const inputGuessEl = document.querySelector('#inputGuess');
 const guessesEl = document.querySelector('#guesses');
 const turnoutEl = document.querySelector('#turnout');
+const btnGetLuckyEl = formGuessEl.querySelector('button[type="submit"]');
 
 // Get a random number between 1-10
 const getRandomNumber = function(max = 10) {
@@ -38,6 +39,10 @@ formGuessEl.addEventListener('submit', e => {
     // Check if guess was correct
     if (guessedNumber === correctNumber) {
         turnoutEl.innerText = `${guessedNumber} is correct!`;
+
+        // Stop user from making more guesses (as their guess was correct)
+        btnGetLuckyEl.setAttribute('disabled', 'disabled');
+
     } else if (guessedNumber < correctNumber) { 
         turnoutEl.innerText = `${guessedNumber} is too low.`;
     } else {
@@ -63,4 +68,7 @@ formGuessEl.addEventListener('reset', () => {
 
     // Empty previuos result
     turnoutEl.innerHTML = '';
+
+    // Enable submit-button again
+    btnGetLuckyEl.removeAttribute('disabled');
  });
