@@ -44,3 +44,17 @@ formGuessEl.addEventListener('submit', e => {
         turnoutEl.innerText = `${guessedNumber} is too high.`;
     }
 });
+
+// Listen for reset / "New game"
+formGuessEl.addEventListener('reset', () => {
+    // Get a new number to guess
+    correctNumber = getRandomNumber();
+    cheatEl.innerText = correctNumber;
+
+    // Reset number of guesses
+    guesses = 0;
+    guessesEl.innerText = `${guesses} guesses.`;
+
+    // Empty previuos result
+    turnoutEl.innerHTML = '';
+ });
