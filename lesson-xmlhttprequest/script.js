@@ -16,6 +16,14 @@
 // Create a new XML Http Request
 const request = new XMLHttpRequest();
 
+// Attach an event-listener to the request
+request.addEventListener('readystatechange', () => {
+    // Check status of request
+    console.log("Request:", request);
+    console.log("Request readyState:", request.readyState);
+    console.log("Request responseText:", request.responseText);
+});
+
 // Set request to GET data from 'https://jsonplaceholder.typicode.com/users'
 request.open('GET', 'https://jsonplaceholder.typicode.com/users');
 
