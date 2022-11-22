@@ -1,6 +1,7 @@
 const cheatEl = document.querySelector('#cheat');
 const formGuessEl = document.querySelector('#formGuess');
 const inputGuessEl = document.querySelector('#inputGuess');
+const guessesEl = document.querySelector('#guesses');
 const turnoutEl = document.querySelector('#turnout');
 
 // Get a random number between 1-10
@@ -27,6 +28,12 @@ formGuessEl.addEventListener('submit', e => {
 
     // Get guesses number from input-field (and convert it to a number)
     const guessedNumber = Number(inputGuessEl.value);
+
+    // Increase number of guesses made
+    guesses++;
+
+    // Update DOM with guesses made
+    guessesEl.innerText = `${guesses} guesses.`;
 
     // Check if guess was correct
     if (guessedNumber === correctNumber) {
