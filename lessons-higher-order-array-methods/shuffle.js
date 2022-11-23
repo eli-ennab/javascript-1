@@ -34,3 +34,6 @@ const names = ["Abdirahman Ali", "Albin Lindeborg", "Alexander Olsson", "Amer El
 
 shuffleArray(names);
 console.log("Dissy students:", names);
+
+// shuffleArray(names);
+// console.log("Shuffled student:", names[0]);
