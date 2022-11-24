@@ -1,13 +1,13 @@
 /**
  * XMLHttpRequest
- * 
+ *
  * MINI-WORKSHOP: Skriv om getUsers till getJSON och lägg till att den kan
  * hämta vilken som helst och ÄNDÅ ta emot en callback som får både om något
  * går fel OCH datan från om requesten lyckas.
  *
  */
 
- const getUsers = (callback) => {
+ const getJSON = (url, callback) => {
 	// Create a new XML Http Request
 	const request = new XMLHttpRequest();
 
@@ -30,33 +30,35 @@
 				// Something went wrong :'(
 				console.log("ERROR ERROR DANGER WILL ROBINSON!");
 
-                // invoke(call) callback
-                callback ( "Could not get data" );
+				// invoke(call) callback
+				callback( "Could not get data" );
 			}
 		}
 	});
 
 	// Set request to GET data from 'https://jsonplaceholder.typicode.com/users'
-	request.open('GET', 'https://jsonplaceholder.typicode.com/users');
+	request.open('GET', url);
 
 	// Send the request
 	request.send();
 
-	console.log("Request sent!");
+	console.log("Request sent.");
 }
 
 // Get users and output their names to DOM
-getUsers( (err, users) => {
-	console.log("Hello, I'm going to output users to DOM");
+getJSON('https://jsonplaceholder.typicode.com/users',		// url
+ (err, users) => {											// callback
+	console.log("Hello, I'm going to output users to DOM.");
 
-    if (err) {
-        // Something went wrong
-        alert( err );
-    } else {
-        // Loop over all users
-        users.forEach(user => {
-            // Append a listitem for each user
-            document.querySelector('#users').innerHTML += `<li>${user.name}</li>`;
-        });
-    }
+	if (err) {
+		// something went wrong
+		alert( err );
+
+	} else {
+		// Loop over all users
+		users.forEach(user => {
+			// Append a listitem for each user
+			document.querySelector('#users').innerHTML += `<li>${user.name}</li>`;
+		});
+	}
 } );
