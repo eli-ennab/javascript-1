@@ -3,55 +3,48 @@
  *
  */
 
-// console.log(1);
-// console.log(2);
+ const getUsers = () => {
+	// Create a new XML Http Request
+	const request = new XMLHttpRequest();
 
-// setTimeout(() => {
-//     console.log(3);
-// }, 2000);
+	// Attach an event-listener to the request
+	request.addEventListener('readystatechange', () => {
+		// Is request done?
+		if (request.readyState === 4) {    // 4 = DONE
 
-// console.log(4);
-// console.log(5);
+			// Was the request successful?
+			if (request.status === 200) {
+				// 200 OK
 
-// Create a new XML Http Request
-const request = new XMLHttpRequest();
+				// take the STRING in responseText and PARSE it into JavaScript object
+				const data = JSON.parse(request.responseText);
 
-// Attach an event-listener to the request
-request.addEventListener('readystatechange', () => {
-    // Is equest finished?
-    if (request.readyState === 4) {     // 4 = DONE
-        // console.log("Got me some data.", request);
+				console.log("Got me sum data:", data);
 
-        // Was the request successful?
-        if (request.status === 200) {
-            // 200 OK
-            console.log("200 OK!");
+				// Loop over all users
+				data.forEach(user => {
+					// Append a listitem for each user
+					document.querySelector('#users').innerHTML += `<li>${user.name}</li>`;
+				});
 
-            // Take the STRING in responseText and PARSE it into Javascript object
-            const data = JSON.parse(request.responseText);
+			} else {
+				// Something went wrong :'(
+				console.log("ERROR ERROR DANGER WILL ROBINSON!");
+			}
+		}
+	});
 
-            // Log the data
-            // console.log("Got me some data:", data);
-            console.table(data);
+	// Set request to GET data from 'https://jsonplaceholder.typicode.com/users'
+	request.open('GET', 'https://jsonplaceholder.typicode.com/users');
 
-            // Loop over all users
-            data.forEach(user => {
-                // Append a listitem for each user
-                document.querySelector('#users').innerHTML += `<li>${user.name}</li>`;
-                // console.log(user.name);
-            });
-        
-        } else {
-            console.log("Something went wrong.");
-        }
-    }
-});
+	// Send the request
+	request.send();
 
-// Set request to GET data from 'https://jsonplaceholder.typicode.com/users'
-request.open('GET', 'https://jsonplaceholder.typicode.com/users');
+	console.log("Request sent!");
+}
 
-// Send the request
-request.send();
+// Get users
+getUsers();
 
 // Done?
-console.log("Request sent.");
+console.log("All requests sent!");
