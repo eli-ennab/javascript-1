@@ -19,15 +19,15 @@ const willWeGetTheAnswersToTheExam = () => {
 	} );
 };
 
-const teacherPromise = willWeGetTheAnswersToTheExam();
-// console.log(teacherPromise);
-
-teacherPromise
+// Get promise of answers
+willWeGetTheAnswersToTheExam()
 	.then( () => {
-		console.log('YAY! We will get the exam.');
+		console.log('YAY! We will get the answers to the exam.');
+		alert('YAY! We will get the answers to the exam.');
 	})
 	.catch( () => {
 		console.log('NEY! Teacher was not nice.');
+		alert('NEY! Teacher was not nice.');
 	});
 
 console.log('Promise started.');
