@@ -1,9 +1,10 @@
 /**
  * Promises 101
- *
+ * 
  */
 
 const teacherIsNice = true;
+// const teacherIsNice = false;
 
 const willWeGetTheAnswersToTheExam = () => {
 	return new Promise ( (resolve, reject) => {
@@ -11,9 +12,10 @@ const willWeGetTheAnswersToTheExam = () => {
 		// and when done, either resolve or reject the promise
 		setTimeout(() => {
 			if (teacherIsNice) {
-				resolve();
+				const data = [42, 1337, 1, 13];
+				resolve(data);
 			} else {
-			reject();
+			reject("You no answers get.");
 			}
 		}, 2000);
 	} );
@@ -21,12 +23,12 @@ const willWeGetTheAnswersToTheExam = () => {
 
 // Get promise of answers
 willWeGetTheAnswersToTheExam()
-	.then( () => {
-		console.log('YAY! We will get the answers to the exam.');
+	.then( (data) => {			// resolved
+		console.log('YAY! We will get the answers to the exam.', data);
 		alert('YAY! We will get the answers to the exam.');
 	})
-	.catch( () => {
-		console.log('NEY! Teacher was not nice.');
+	.catch( (err) => {			// rejected
+		console.log('NEY! Teacher was not nice.', err);
 		alert('NEY! Teacher was not nice.');
 	});
 
