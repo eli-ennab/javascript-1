@@ -36,3 +36,36 @@
 	request.send();  // Send the request
 	console.log("Request sent!");
 }
+
+// Get cats
+getJSON('data/cats.json', (err, cats) => {
+	if (err) {
+		alert("Could not get list of cats! Error was:" + err);
+		return;
+	}
+
+	// Got cats!
+	console.log("Got lists of cats:", cats);
+
+	// Get doggos
+	getJSON('data/dogs.json', (err, dogs) => {
+		// Got dogs!
+		console.log("Got lists of dogs:", dogs);
+
+		// Get birds
+		getJSON('data/birds.json', (err, birds) => {
+		// Got birds!
+		console.log("Got lists of birds:", birds);
+		});
+	});
+});
+
+// CALLBACK HELL
+getJSON('data/cats.json', (err, cats) => {
+	// Get doggos
+	getJSON('data/dogs.json', (err, dogs) => {
+		// Get birds
+		getJSON('data/birds.json', (err, birds) => {
+		})
+	})
+});
