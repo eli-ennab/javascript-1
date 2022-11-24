@@ -62,3 +62,21 @@ getJSON('https://jsonplaceholder.typicode.com/users',		// url
 		});
 	}
 } );
+
+// Get posts and output their names to DOM
+getJSON('https://jsonplaceholder.typicode.com/posts',		// url
+ (err, posts) => {											// callback
+	console.log("Hello, I'm going to output posts to DOM.");
+
+	if (err) {
+		// something went wrong
+		alert( err );
+
+	} else {
+		// Loop over all users
+		posts.forEach(post => {
+			// Append a listitem for each user
+			document.querySelector('#posts').innerHTML += `<li>${post.title}</li>`;
+		});
+	}
+} );
