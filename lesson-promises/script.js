@@ -36,34 +36,42 @@ willWeGetTheAnswersToTheExam()
 console.log('Promise started.');
 */
 
- const getJSON = (url) => {
-	return new Promise ( (resolve, reject) => {
+const getJSON = (url) => {
+	return new Promise( (resolve, reject) => {
 		// Get the data we promised
 		const request = new XMLHttpRequest();
 
 		request.addEventListener('readystatechange', () => {
 			if (request.readyState === 4) {
 				if (request.status === 200) {
-					const data = JSON.parse(request.responseText); // make it a javascript object
-					resolve(data);	// resolve promise and pass along the data
-					
+					const data = JSON.parse(request.responseText);
+					resolve(data);  // resolve promise and pass along the data
+
 				} else {
-				reject( `Could not get data, response status: ${response.status}` );	// reject promise and pass along reason
+					reject(`Could not get data, response status: ${request.status}`);  // reject promise and pass along reason
 				}
 			}
 		});
+
 		request.open('GET', url);  // Set request to GET data
 		request.send();  // Send the request
 	} );
 }
 
-// Något är fel på err så kolla i Johans fil senare
-
 console.log("Getting data...");
-getJSON('data/cd.json')
-	.then(cats => {			// resolved
-		console.log("Got cats", cats);
+getJSON('data/cats.json')
+	.then(cats => {
+		console.log("Got cats?", cats);
+
+		getJSON('data/dogs.json')
+			.then(dogs => {
+				console.log("Got dogs?", dogs);
+			})
+			.catch(err => {
+				console.log("No doggos found, reason:", err);
+			});
+
 	})
-	.catch(err => {			// rejected
-		console.log("No cats for you. Reason:", err);
+	.catch(err => {
+		console.error("NO CATS 4 U! Reason:", err);
 	});
