@@ -59,7 +59,7 @@ const getJSON = (url) => {
 }
 
 console.log("Getting data...");
-getJSON('data/cats.json')
+getJSON('data/cats.json')		// a promise-object
 	.then(cats => {
 		console.log("Got cats?", cats);
 
@@ -74,4 +74,8 @@ getJSON('data/cats.json')
 	})
 	.catch(err => {
 		console.error("NO CATS 4 U! Reason:", err);
+	})
+	.finally(() => {	// no matter if it's resolved or rejected
+		// hide loading spinner for example
+		console.log("FINALLY DONE.");
 	});
