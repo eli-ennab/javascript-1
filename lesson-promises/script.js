@@ -36,6 +36,9 @@ willWeGetTheAnswersToTheExam()
 console.log('Promise started.');
 */
 
+// Promises, a risk of promise hell
+
+/*
 const getJSON = (url) => {
 	return new Promise( (resolve, reject) => {
 		// Get the data we promised
@@ -79,3 +82,47 @@ getJSON('data/cats.json')		// a promise-object
 		// hide loading spinner for example
 		console.log("FINALLY DONE.");
 	});
+	*/
+
+	// A better way to write promises
+
+	const getJSON = (url) => {
+		return new Promise( (resolve, reject) => {
+			// Get the data we promised
+			const request = new XMLHttpRequest();
+	
+			request.addEventListener('readystatechange', () => {
+				if (request.readyState === 4) {
+					if (request.status === 200) {
+						const data = JSON.parse(request.responseText);
+						resolve(data);  // resolve promise and pass along the data
+	
+					} else {
+						reject(`${request.responseURL} returned ${request.status}`);  // reject promise and pass along reason
+					}
+				}
+			});
+	
+			request.open('GET', url);  // Set request to GET data
+			request.send();  // Send the request
+		} );
+	}
+	
+	console.log("Getting data...");
+	getJSON('data/cats.json')		// a promise-object
+		.then(cats => {
+			console.log("Got cats?", cats);
+	
+			return getJSON('data/dogs.json')	
+		})
+		.then(dogs => {
+			console.log("Got dogs?", dogs)
+
+			return getJSON('data/birds.json')	
+		})
+		.then(birds => {
+			console.log("Got birds?", birds)	
+		})
+		.catch(err => {
+			console.error("Something went wrong. Reason:", err);
+		});
