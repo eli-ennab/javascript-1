@@ -6,5 +6,9 @@
 	{
 		"id": "Dogs",
 		"url": "data/dogs.json"
+	},
+	{
+		"id": "Birds",
+		"url": "data/birds.json"
 	}
 ]

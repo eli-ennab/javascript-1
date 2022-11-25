@@ -107,7 +107,8 @@ getJSON('data/cats.json')		// a promise-object
 			request.send();  // Send the request
 		} );
 	}
-	
+
+/*
 	console.log("Getting data...");
 	getJSON('data/cats.json')		// a promise-object
 		.then(cats => {
@@ -126,3 +127,28 @@ getJSON('data/cats.json')		// a promise-object
 		.catch(err => {
 			console.error("Something went wrong. Reason:", err);
 		});
+*/
+
+// Fetch `pets.json`, and then, for each file in `pets`, get that file
+
+// Fetch `pets.json`, and then, for each file in `pets`, get that file
+getJSON('data/pets.json')
+	.then(pets => {
+		console.log("Pets:", pets);
+
+		// For each file in `pets`, get that file
+		pets.forEach(pet => {
+			console.log("Pet:", pet);
+
+			// Get that file
+			getJSON(pet.url)
+				.then(data => {
+					console.log("Got pet data:", data);
+
+				})
+		});
+
+	})
+	.catch(err => {
+		console.log("Could not get data, reason:", err);
+	});
