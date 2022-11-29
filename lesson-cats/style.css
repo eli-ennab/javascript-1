@@ -5,3 +5,7 @@
 	margin-bottom: 1em;
 	text-align: center;
 }
+
+.hide {
+	display: none;
+}
