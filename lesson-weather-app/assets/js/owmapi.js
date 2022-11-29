@@ -22,8 +22,3 @@ const getCurrentWeather = async (city) => {
     // Return current weather
     return data;
 }
-
-getCurrentWeather("Malmö")
-    .then(weather => {
-        console.log(weather);
-    });
