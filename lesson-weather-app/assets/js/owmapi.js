@@ -14,8 +14,13 @@ const getCurrentWeather = async (city) => {
     // Get weather for city from OpenWeatherMap API
     const response = await fetch(`${BASE_URL}/weather?q=${city}&units=metric&appid=${API_KEY}`);
 
+    const errorEl = document.querySelector('#error');
+	errorEl.classList.add('hide');
+
     // Check if response is OK
     if (!response.ok) {
+        errorEl.innerText = `That city does not exist. Error: "${response.statusText}".`;
+		errorEl.classList.remove('hide');
         throw new Error(`${response.status} ${response.statusText}`);
     }
 

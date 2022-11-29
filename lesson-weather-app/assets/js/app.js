@@ -31,6 +31,12 @@ const renderCurrentWeather = (data => {
 document.querySelector('#search-form').addEventListener('submit', async (e) => {
     e.preventDefault();
 
+    const spinnerEl = document.querySelector('#spinner');
+    spinnerEl.classList.remove('hide');
+
+    const forecastEl = document.querySelector('#forecast');
+    forecastEl.classList.add('hide');
+
     // document.querySelector('#query').value; // OR
     const city = e.target.query.value.trim();  // trim takes away all the whitespaces
 
@@ -46,5 +52,7 @@ document.querySelector('#search-form').addEventListener('submit', async (e) => {
     const data = await getCurrentWeather(city);
 
     // Render current weather conditions
+    forecastEl.classList.remove('hide');
+    spinnerEl.classList.add('hide');
     renderCurrentWeather(data);
 });
