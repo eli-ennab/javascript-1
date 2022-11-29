@@ -3,23 +3,52 @@
  *
  * <https://cataas.com/>
  * <https://cataas.com/cat?json=true>
- */
+ */ 
 
-const catImg = document.querySelector('#catImg');
+// // My solution
+// const catImg = document.querySelector('#catImg');
 
- const getCat = async () => {
-	const response = await fetch('https://cataas.com/cat?json=true');
-	if(!response.ok) {
-		throw new Error("Response was not OK.");
+//  const getCat = async () => {
+// 	const response = await fetch('https://cataas.com/cat?json=true');
+// 	if(!response.ok) {
+// 		throw new Error("Response was not OK.");
+// 	}
+// 	const cat = await response.json();
+
+// 	catImg.src = `https://cataas.com/${cat.url}`;
+// };
+
+// document.querySelector('#getCatBtn').addEventListener('click', () => {
+// 	getCat();
+// });
+
+// // Start of with a
+// getCat();
+
+// -----------------------------------------------------------------------------------------------------------------
+
+// Johans solution
+const baseURL = 'https://cataas.com';
+
+const getJSON = async(url) => {
+	const response = await fetch(url);				// we want to wait (await) for the promise to be resolved (fetch)
+	if (!response.ok) {
+		throw new Error(`Response was not OK. Status returned was "${res.status} ${res.statusText}".`);
 	}
-	const cat = await response.json();
+	return await response.json();					// returns a promise (the result of the promise when resolved)
+}
 
-	catImg.src = `https://cataas.com/${cat.url}`;
-};
+const getNewCat = async () => {
+	console.log('New cat.');
+
+	const cat = await getJSON(`${baseURL}/cat?json=true`)
+	document.querySelector('#catImg').src = baseURL + cat.url;
+}
 
 document.querySelector('#getCatBtn').addEventListener('click', () => {
-getCat();
+	getNewCat();
 });
 
-// Start of with a
-getCat();
+// Start of with a cat
+getNewCat();
+
