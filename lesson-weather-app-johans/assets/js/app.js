@@ -39,6 +39,9 @@
 	 }
 	 */
  
+	 // get weather report freshness
+	 const freshness = new Date( data.dt * 1000 );
+ 
 	 forecastEl.innerHTML = `
 		 <div class="card">
 			 <img src="${banner}" class="card-img-top">
@@ -62,6 +65,7 @@
 				 <ul class="conditions">
 					 ${conditions.join('')}
 				 </ul>
+				 <p class="text-muted small">${freshness.toLocaleString()}</p>
 			 </div>
 		 </div>
 	 `;
