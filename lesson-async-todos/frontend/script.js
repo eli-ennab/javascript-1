@@ -24,6 +24,34 @@ const newTodoFormEl = document.querySelector('#new-todo-form');
 // list of todos
 let todos = [];
 
+/*
+* Get todos from server, update `todos` array and render todos
+*/
+
+const getTodos = async () => {
+    // Fetch todos from server
+    const data = await fetchTodos();
+
+    // Set `todos` array to the data we got from the server
+    todos = data;       // 'update state'
+
+    // Render the todos
+    renderTodos();
+}
+
+/*
+* Fetch todos from server
+*/
+
+const fetchTodos = async() => {
+    const res = await fetch('http://localhost:3001/todos');         // res = response, await the url
+    if (!res.ok) {
+    throw newError(`Could not fetch todos, reason: ${res.status.text}`);
+    }
+
+    return await res.json();                                   // get json, returns a promise
+}
+
 // Render todos to DOM
 const renderTodos = () => {
 	console.log("rendering todos...");
@@ -44,7 +72,6 @@ const renderTodos = () => {
 
 	todosEl.innerHTML = lis.join('');
 }
-renderTodos();
 
 // Listen for click-events on `#todos` (the `<ul>`)
 todosEl.addEventListener('click', (e) => {
@@ -117,12 +144,5 @@ newTodoFormEl.addEventListener('submit', (e) => {
 	newTodoFormEl.reset();
 });
 
-/*
-// STOP USER FROM RESETTING FORM 😈
-newTodoFormEl.addEventListener('reset', e => {
-	// YOU NO RESET FORM, FORM RESETS YOU!
-	e.preventDefault();
-
-	alert("YOU NO RESET FORM, FORM RESETS YOU!");
-});
-*/
+// Get and render todos
+getTodos();
