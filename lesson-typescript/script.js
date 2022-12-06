@@ -6,5 +6,17 @@
  * tsc -w script.ts
  *
  */
-console.log("Hello TypeScript");
-console.log("Hello again, TypeScript");
+var username = "Johan";
+username.toUpperCase();
+var level = 1337;
+level = 42;
+var x; // deklarera variablen och bestäm datatyp
+x = "Eli";
+var b;
+b = false;
+b = true;
+var todos = ["Learn JS", "Learn TS"];
+todos.push("Learn stuff.");
+// todos.push(42); // Error: kan inte pusha nummer till en array med strängar
+var names = [];
+var points = [];

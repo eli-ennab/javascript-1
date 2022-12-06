@@ -7,6 +7,23 @@
  * 
  */
 
-console.log("Hello TypeScript");
+let username = "Johan";
+username.toUpperCase();
 
-console.log("Hello again, TypeScript");
+let level = 1337;
+level = 42;
+
+let x: string;          // deklarera variablen och bestäm datatyp
+x = "Eli";
+
+let b: boolean;
+b = false;
+b = true;
+
+let todos = ["Learn JS", "Learn TS"];
+todos.push("Learn stuff.");
+// todos.push(42); // Error: kan inte pusha nummer till en array med strängar
+
+let names: string[] = [];
+
+let points: number[] = [];
