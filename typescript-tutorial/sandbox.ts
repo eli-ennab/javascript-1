@@ -138,3 +138,64 @@ console.log(ninja)
 ninja = { name: 25, age: 'ninja' }
 console.log(ninja)
 */
+
+/*
+* Video #8 Function basics
+*/
+
+/*
+let greet: Function
+
+greet = () => {
+    console.log('hello again')
+}
+
+// Parameters inside functions
+
+const add = (a: number, b: number, c?: number | string) => {
+    console.log(a + b)
+    console.log(c)      // undefined if not given a value
+}
+
+add(5, 10)
+
+// OR give it a default value if not passed in
+
+const add2 = (a: number, b: number, c: number | string = 10) => {
+    console.log(a + b)
+    console.log(c)      // default value 10 if not given a value
+}
+
+add2(5, 10)         // 15 och 10
+add2(5, 10, 20)     // 15 och 20
+
+// Return in functions
+
+// const minus = (a: number, b: number): number => { // : number means the return data type
+    const minus = (a: number, b: number) => {
+    return a + b
+}
+
+let result = minus(10, 7)
+*/
+
+/*
+* Video #9 Type aliases
+*/
+
+/*
+type StringOrNum = string | number
+type objWithName = { name: string, uid: StringOrNum}
+
+const logDetails = (uid: StringOrNum, item: string) => {
+    console.log(`${item} har a uid of ${uid}`)
+}
+
+const greet = (user: objWithName) => {
+    console.log(`${user.name} says hello`)
+}
+
+const greetAgain = (user: objWithName) => {
+    console.log(`${user.name} says hello again`)
+}
+*/
