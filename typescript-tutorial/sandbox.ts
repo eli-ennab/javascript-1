@@ -304,10 +304,11 @@ class Invoice {
   console.log(invoices)
   */
 
-  /*
+/*
 * Video #13 Public, private and readonly
 */
 
+/*
 class Invoice {
     constructor(
       readonly client: string,
@@ -330,3 +331,35 @@ class Invoice {
   invoices.forEach(inv => {
     console.log(inv.client, inv.amount, inv.format())
   })
+  */
+
+/*
+* Video #15 Interfaces
+*/
+/*
+// Not sure it works in this file, but see it as notes
+interface IsPerson {
+    name: string
+    age: number
+    speak(a: string): void
+    spend(a: number): number
+  }
+  
+  const me: IsPerson = {
+    name: 'shaun',
+    age: 30,
+    speak(text: string): void {
+      console.log(text)
+    },
+    spend(amount: number): number {
+      console.log('I spent', amount)
+      return amount
+    }
+  }
+  
+  const greetPerson = (person: IsPerson) => {
+    console.log('hello', person.name)
+  }
+  
+  greetPerson(me)
+  */
