@@ -6,13 +6,29 @@ const newTodoForm = document.querySelector('#new-todo-form')
 
 // specification
 type Todo = {
+	id: number,
 	title: string,
 	completed: boolean,
 }
 
 // list of todos
-const todos: Todo[] = []
-// console.log(todos)
+const todos: Todo[] = [
+	{
+		id: 1,
+		title: "Learn basic Javascript",
+		completed: true,
+	},
+	{
+		id: 2,
+		title: "Learn advanced Javascript",
+		completed: true,
+	},
+	{
+		id: 3,
+		title: "Learn basic TypeScript",
+		completed: false,
+	},
+]
 
 // render todos
 const renderTodos = () => {
@@ -33,7 +49,10 @@ const renderTodos = () => {
 
 	// replace todosList content
 	todosList.innerHTML = todos
-	.map(todo => `<li class="list-group-item">${todo.title}</li>`)
+	.map(todo => 
+		`<li class="list-group-item ${todo.completed ? 'completed' : ''}">
+			${todo.title}
+		</li>`)
 	.join('')
 }
 
