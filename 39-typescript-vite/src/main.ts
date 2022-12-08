@@ -10,11 +10,25 @@ const todos: string[] = []
 
 // render todos
 const renderTodos = () => {
-	todosList.innerHTML = ''
-
-	todos.forEach(todo => {
-		todosList.innerHTML += `<li class="list-group-item">${todo}</li>`
+	/*
+	// transform todos into a string-array of `<li>`elements
+	const listitems = todos.map(todo => {
+		return `<li class="list-group-item">${todo}</li>`
 	})
+
+	// implode li-array to a single string
+	const output = listitems.join('')
+
+	// replace todosList content
+	todosList.innerHTML = output
+	*/
+
+	// same as...
+
+	// replace todosList content
+	todosList.innerHTML = todos
+	.map(todo => `<li class="list-group-item">${todo}</li>`)
+	.join('')
 }
 
 // Create a new todo form
