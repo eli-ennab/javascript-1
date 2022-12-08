@@ -36,8 +36,8 @@ const renderTodos = () => {
 	// replace todosList content
 	todosList.innerHTML = todos
 	.map(todo => 
-		`<li id= ${todo.id} class="list-group-item ${todo.completed ? 'completed' : ''}">
-			${todo.title} with id: ${todo.id}
+		`<li class="list-group-item ${todo.completed ? 'completed' : ''}" data-todo-id="${todo.id}">
+			${todo.title}
 		</li>`)
 	.join('')
 }
@@ -52,16 +52,13 @@ newTodoForm?.addEventListener('submit', e => {
 		return
 	}
 
-    // extract all todo-ids
-    const maxTodoId = todos.reduce((maxId, todo) => {
-		return Math.max(todo.id, maxId);
-	}, 0);
-
-	const newTodoId = maxTodoId + 1;
+    // find maximum id in todos-array
+	const todoIds = todos.map(todo => todo.id)
+	const maxId = Math.max(...todoIds)
 
 	// push todo into list of todos
 	const newTodo: Todo = {
-		id: newTodoId,
+		id: maxId + 1,
 		title: newTodoTitle,
 		completed: false
 	}
@@ -81,28 +78,22 @@ renderTodos()
 // Click event on ul
 todosList.addEventListener('click', e => {
 	e.preventDefault()
-	
-	const lis = document.querySelector<HTMLInputElement>('.list-group-item')
-	console.log(lis?.value)
 
-	if (e.target === lis) {
-	console.log('You clicked LI', e.target)
-	} else {
-		console.log('You clicked UL', e.target)
-	}
+	const target = (e.target as HTMLElement)
 
-			// // get the `data-todo-id` attribute from the LI element
-			// const clickedTodoId = e.target.dataset.todoId;     // `data-todo-id`
-			// console.log("You clicked on the listitem for todo with id:", clickedTodoId);
-	
-			// // search todos for the todo with the id todoId
-			// const clickedTodo = todos.find( (todo) => {
-			// 	return todo.id == clickedTodoId;
-			// } );
-	
-			// // change completed-status of found todo
-			// clickedTodo.completed = !clickedTodo.completed;
-	
-			// render updated todos
-			renderTodos();
+	if (target.tagName === "LI") {
+		// find id of clicked todo
+		const todoId = Number(target.dataset.todoId)
+
+		// find the todo with the id of the clicked todo
+		const foundTodo = todos.find(todo => todo.id === todoId)
+
+		// if we found the todo, toggle it's completed status
+		if (foundTodo) {
+			foundTodo.completed = !foundTodo.completed
+		}
+	} 
+
+	// render updated todos
+	renderTodos();
 })
