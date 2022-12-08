@@ -36,7 +36,7 @@ const renderTodos = () => {
 	// replace todosList content
 	todosList.innerHTML = todos
 	.map(todo => 
-		`<li class="list-group-item ${todo.completed ? 'completed' : ''}">
+		`<li id= ${todo.id} class="list-group-item ${todo.completed ? 'completed' : ''}">
 			${todo.title} with id: ${todo.id}
 		</li>`)
 	.join('')
@@ -56,7 +56,7 @@ newTodoForm?.addEventListener('submit', e => {
     const maxTodoId = todos.reduce((maxId, todo) => {
 		return Math.max(todo.id, maxId);
 	}, 0);
-	
+
 	const newTodoId = maxTodoId + 1;
 
 	// push todo into list of todos
@@ -77,3 +77,32 @@ newTodoForm?.addEventListener('submit', e => {
 
 // render all todos
 renderTodos()
+
+// Click event on ul
+todosList.addEventListener('click', e => {
+	e.preventDefault()
+	
+	const lis = document.querySelector<HTMLInputElement>('.list-group-item')
+	console.log(lis?.value)
+
+	if (e.target === lis) {
+	console.log('You clicked LI', e.target)
+	} else {
+		console.log('You clicked UL', e.target)
+	}
+
+			// // get the `data-todo-id` attribute from the LI element
+			// const clickedTodoId = e.target.dataset.todoId;     // `data-todo-id`
+			// console.log("You clicked on the listitem for todo with id:", clickedTodoId);
+	
+			// // search todos for the todo with the id todoId
+			// const clickedTodo = todos.find( (todo) => {
+			// 	return todo.id == clickedTodoId;
+			// } );
+	
+			// // change completed-status of found todo
+			// clickedTodo.completed = !clickedTodo.completed;
+	
+			// render updated todos
+			renderTodos();
+})
