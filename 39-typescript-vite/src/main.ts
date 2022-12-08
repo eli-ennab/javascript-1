@@ -44,6 +44,9 @@ newTodoForm?.addEventListener('submit', e => {
 	todos.push(newTodoTitle)
 	// console.log(todos)
 
+	// empty input field
+	document.querySelector<HTMLInputElement>('#new-todo-title')!.value = ''
+
 	// render all todos
 	renderTodos()
 })
