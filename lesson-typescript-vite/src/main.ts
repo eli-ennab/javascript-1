@@ -1,3 +1,4 @@
+import 'bootstrap/dist/css/bootstrap.css'
 import './style.css'
 
 const todosList = document.querySelector('#todos')
