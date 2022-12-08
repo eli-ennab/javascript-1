@@ -32,26 +32,12 @@ const todos: Todo[] = [
 
 // render todos
 const renderTodos = () => {
-	/*
-	// transform todos into a string-array of `<li>`elements
-	const listitems = todos.map(todo => {
-		return `<li class="list-group-item">${todo}</li>`
-	})
-
-	// implode li-array to a single string
-	const output = listitems.join('')
-
-	// replace todosList content
-	todosList.innerHTML = output
-	*/
-
-	// same as...
 
 	// replace todosList content
 	todosList.innerHTML = todos
 	.map(todo => 
 		`<li class="list-group-item ${todo.completed ? 'completed' : ''}">
-			${todo.title}
+			${todo.title} with id: ${todo.id}
 		</li>`)
 	.join('')
 }
@@ -66,8 +52,16 @@ newTodoForm?.addEventListener('submit', e => {
 		return
 	}
 
+    // extract all todo-ids
+    const maxTodoId = todos.reduce((maxId, todo) => {
+		return Math.max(todo.id, maxId);
+	}, 0);
+	
+	const newTodoId = maxTodoId + 1;
+
 	// push todo into list of todos
 	const newTodo: Todo = {
+		id: newTodoId,
 		title: newTodoTitle,
 		completed: false
 	}
