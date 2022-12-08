@@ -35,11 +35,12 @@ const renderTodos = () => {
 newTodoForm?.addEventListener('submit', e => {
 	e.preventDefault()
 
-	const newTodoTitle = document.querySelector<HTMLInputElement>('#new-todo-title')?.value || ''
+	const newTodoTitle = document.querySelector<HTMLInputElement>('#new-todo-title')!.value
 	if (newTodoTitle.length < 3) {
 		alert('Too short todo')
 		return
 	}
+	
 	// push todo into list of todos
 	todos.push(newTodoTitle)
 	// console.log(todos)
