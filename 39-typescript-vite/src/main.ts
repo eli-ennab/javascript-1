@@ -4,8 +4,14 @@ import './style.css'
 const todosList = document.querySelector('#todos')!
 const newTodoForm = document.querySelector('#new-todo-form')
 
+// specification
+type Todo = {
+	title: string,
+	completed: boolean,
+}
+
 // list of todos
-const todos: string[] = []
+const todos: Todo[] = []
 // console.log(todos)
 
 // render todos
@@ -27,7 +33,7 @@ const renderTodos = () => {
 
 	// replace todosList content
 	todosList.innerHTML = todos
-	.map(todo => `<li class="list-group-item">${todo}</li>`)
+	.map(todo => `<li class="list-group-item">${todo.title}</li>`)
 	.join('')
 }
 
@@ -40,9 +46,13 @@ newTodoForm?.addEventListener('submit', e => {
 		alert('Too short todo')
 		return
 	}
-	
+
 	// push todo into list of todos
-	todos.push(newTodoTitle)
+	const newTodo: Todo = {
+		title: newTodoTitle,
+		completed: false
+	}
+	todos.push(newTodo)
 	// console.log(todos)
 
 	// empty input field
