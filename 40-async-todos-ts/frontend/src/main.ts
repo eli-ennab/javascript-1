@@ -30,7 +30,6 @@ const fetchTodos = async () => {
 const getTodos = async () => {
     // Fetch todos from server and update local copy
     todos = await fetchTodos()
-    console.log(todos)
 
     // Render todos
     renderTodos()
