@@ -98,9 +98,29 @@ document.querySelector('#new-todo-form')?.addEventListener('submit', async (e) =
     // Get the new list of todos from the server
     getTodos()
 
-    // Reset form
-
+    // Empty input field
+	document.querySelector<HTMLInputElement>('#newTodo')!.value = ''
 })
 
 getTodos()
 
+// Listen for not completed todos
+document.querySelector('#todos')?.addEventListener('click', async (e) => {
+    const target = e.target as HTMLElement
+
+    if (target.tagName === "LI") {
+        console.log('A not completed li:', target.innerText)
+    }
+
+	// render updated todos
+	renderTodos();
+});
+
+// Listen for completed todos
+document.querySelector('#completed-todos')?.addEventListener('click', async (e) => {
+    const target = e.target as HTMLElement
+
+    if (target.tagName === "LI") {
+        console.log('A completed li:', target.innerText)
+    }
+});
