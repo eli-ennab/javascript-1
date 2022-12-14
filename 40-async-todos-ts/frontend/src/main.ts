@@ -104,23 +104,43 @@ document.querySelector('#new-todo-form')?.addEventListener('submit', async (e) =
 
 getTodos()
 
-// Listen for not completed todos
+
+/*
+* Tries with FETCH on clicked and updated todo
+*/
+
+// Listen for not completed todos and change to completed todo
 document.querySelector('#todos')?.addEventListener('click', async (e) => {
     const target = e.target as HTMLElement
+    let todos = document.getElementById("todos") as HTMLDivElement;
+    let completedTodos = document.getElementById("completed-todos") as HTMLDivElement;
 
     if (target.tagName === "LI") {
-        console.log('A not completed li:', target.innerText)
-    }
+        // Remove the list item from its current parent div
+        todos.removeChild(target);
 
-	// render updated todos
-	renderTodos();
+        // Add the list item to the new div
+        completedTodos.appendChild(target);
+    } 
 });
 
-// Listen for completed todos
+// Listen for completed todos and change to not completed todo
 document.querySelector('#completed-todos')?.addEventListener('click', async (e) => {
     const target = e.target as HTMLElement
+    let todos = document.getElementById("todos") as HTMLDivElement;
+    let completedTodos = document.getElementById("completed-todos") as HTMLDivElement;
 
     if (target.tagName === "LI") {
-        console.log('A completed li:', target.innerText)
-    }
+        // Remove the list item from its current parent div
+        completedTodos.removeChild(target);
+
+        // Add the list item to the new div
+        todos.appendChild(target);
+    } 
 });
+
+// const updateTodo = {
+//     ...todos,
+//     completed: true
+// }
+
