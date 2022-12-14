@@ -14,31 +14,6 @@
       "id": 3,
       "title": "Fun with TypeScript",
       "completed": false
-    },
-    {
-      "title": "A new todo",
-      "completed": false,
-      "id": 4
-    },
-    {
-      "title": "Another new todo",
-      "completed": false,
-      "id": 5
-    },
-    {
-      "title": "Win",
-      "completed": false,
-      "id": 6
-    },
-    {
-      "title": "Now?",
-      "completed": false,
-      "id": 7
-    },
-    {
-      "title": "Another new todo!",
-      "completed": false,
-      "id": 8
     }
   ]
 }
