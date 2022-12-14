@@ -59,7 +59,7 @@ const renderTodos = () => {
     document.querySelector('#todos')!.innerHTML = todos
     .filter(todo => !todo.completed)
     .map(todo => `
-    <li class="list-group-item">
+    <li class="list-group-item"  data-todo-id="${todo.id}">
         ${todo.title}
     </li>
     `)
@@ -68,7 +68,7 @@ const renderTodos = () => {
     document.querySelector('#completed-todos')!.innerHTML = todos
     .filter(todo => todo.completed)
     .map(todo => `
-    <li class="list-group-item">
+    <li class="list-group-item" data-todo-id="${todo.id}">
         ${todo.title}
     </li>
     `)
@@ -118,15 +118,18 @@ getTodos()
 //     return completedTodo
 // }
 
-
 // function updateClickedTodo(): ITodo {
     // Listen for not completed todos and change to completed todo
     document.querySelector('#todos')?.addEventListener('click', async (e) => {
         const target = e.target as HTMLElement
         let todos = document.getElementById("todos") as HTMLDivElement;
         let completedTodos = document.getElementById("completed-todos") as HTMLDivElement;
+        let id = target.dataset.todoId
 
         if (target.tagName === "LI") {
+            // Finding the todo's ID
+            console.log(`This is the todo's ID:`, id)
+
             // Remove the list item from its current parent div
             todos.removeChild(target);
 
@@ -140,8 +143,12 @@ getTodos()
         const target = e.target as HTMLElement
         let todos = document.getElementById("todos") as HTMLDivElement;
         let completedTodos = document.getElementById("completed-todos") as HTMLDivElement;
+        let id = target.dataset.todoId
 
         if (target.tagName === "LI") {
+            // Finding the todo's ID
+            console.log(`This is the todo's ID:`, id)
+            
             // Remove the list item from its current parent div
             completedTodos.removeChild(target);
 
