@@ -105,3 +105,5 @@
  });
 
  // set city input to any previously saved city in localStorage
+document.querySelector('#query').value = localStorage.getItem('weather_city')
+
