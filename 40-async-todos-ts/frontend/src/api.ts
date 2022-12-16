@@ -1,12 +1,4 @@
-/*
- * interface
- */
-
-export interface ITodo {
-    id?: number,
-    title: string,
-    completed: boolean,
-}
+import { ITodo } from "./interfaces";
 
 /*
  * Post a todo to the server

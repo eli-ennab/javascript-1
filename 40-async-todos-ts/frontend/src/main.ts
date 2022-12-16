@@ -1,4 +1,5 @@
-import { ITodo, createTodo, fetchTodos } from "./api";
+import { createTodo, fetchTodos } from "./api";
+import { ITodo } from "./interfaces";
 import 'bootstrap/dist/css/bootstrap.css'
 import './style.css'
 
