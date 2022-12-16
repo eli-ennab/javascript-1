@@ -50,7 +50,7 @@ newTodoForm?.addEventListener('submit', e => {
 
     // find maximum id in todos-array
 	const todoIds = todos.map(todo => todo.id)
-	const maxId = Math.max(...todoIds)
+	const maxId = Math.max(0, ...todoIds)
 
 	// push todo into list of todos
 	const newTodo: Todo = {
