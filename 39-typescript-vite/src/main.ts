@@ -11,24 +11,11 @@ type Todo = {
 	completed: boolean,
 }
 
-// list of todos
-const todos: Todo[] = [
-	{
-		id: 1,
-		title: "Learn basic Javascript",
-		completed: true,
-	},
-	{
-		id: 2,
-		title: "Learn advanced Javascript",
-		completed: true,
-	},
-	{
-		id: 3,
-		title: "Learn basic TypeScript",
-		completed: false,
-	},
-]
+// get JSON-todos from local storage
+const json = localStorage.getItem('todos') ?? '[]'
+
+// parse JSON-todos into an array of todo-objects
+const todos: Todo[] = JSON.parse(json)
 
 // render todos
 const renderTodos = () => {
@@ -40,6 +27,15 @@ const renderTodos = () => {
 			${todo.title}
 		</li>`)
 	.join('')
+}
+
+// save todos
+const saveTodos = () => {
+	// convert todos-array to JSON
+	const json = JSON.stringify(todos)
+
+	// save JSON to localStorage
+	localStorage.setItem('todos', json)
 }
 
 // Create a new todo form
@@ -64,6 +60,11 @@ newTodoForm?.addEventListener('submit', e => {
 	}
 	todos.push(newTodo)
 	// console.log(todos)
+
+	/*
+	* save todos to localStorage
+	*/
+	saveTodos()
 
 	// empty input field
 	document.querySelector<HTMLInputElement>('#new-todo-title')!.value = ''
@@ -91,6 +92,11 @@ todosList.addEventListener('click', e => {
 		// if we found the todo, toggle it's completed status
 		if (foundTodo) {
 			foundTodo.completed = !foundTodo.completed
+
+			/*
+			* save todos to localStorage
+			*/
+			saveTodos()
 		}
 	} 
 
