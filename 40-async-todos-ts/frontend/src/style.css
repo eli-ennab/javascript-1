@@ -1,14 +1,5 @@
-/* #app {
-} */
-
-.completed {
-	font-style: italic;
-	text-decoration: line-through;
-	color: #888;
-}
-
 #todos,
 #completed-todos {
-	background-color: #555;
+	background-color: rgb(85, 85, 85);
 	padding: 2rem;
 }
